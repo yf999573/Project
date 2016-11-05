@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from SEproject import views
 
 urlpatterns = [
+    url(r'^search/',views.search),
     url(r'^admin/', admin.site.urls),
 ]
