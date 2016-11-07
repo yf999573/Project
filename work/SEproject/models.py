@@ -33,13 +33,15 @@ class HtmlParser(object):
         print title_node.get_text()
         print datetime.datetime.now()
         print page_url
-        #table_node = soup.find_all('table')
-        print str(soup.table)
-        #for table in table_node:
-            #print str(table)
+        #print str(soup.table)
+        table_node = soup.find_all('table')
+        for table in table_node:
+            #new_test = testhtml(url=page_url, title=title_node.get_text(), time=datetime.datetime.now(),date=table.prettify())
+            #new_test.save()
+            print str(table)
         #models.testhtml.objects.create(url = page_url,title = title_node.get_text(),time = datetime.datetime.now(),date = str(soup.table))
-        new_test = testhtml(url = page_url,title = title_node.get_text(),time = datetime.datetime.now(),date = str(soup.table))
-        new_test.save()
+            new_test = testhtml(url = page_url,title = title_node.get_text(),time = datetime.datetime.now(),date = str(table))
+            new_test.save()
         #models.testhtml.save()
         #p.save()
         #print p.id

@@ -6,22 +6,18 @@
 </head>
 <body>
 <table>
+    {%  for item in tstH_list %}
     <tr>
         <td>URL地址</td>
         <td>搜索时间</td>
         <td>主题词</td>
-    </tr>
-    <tr>
         <td>内容</td>
     </tr>
-    {%  for item in tstH_list %}
     <tr>
         <td>{{item.url}}</td>
         <td>{{ item.time }}</td>
         <td>{{ item.title }}</td>
-    </tr>
-    <tr>
-        <td>{{ item.date}}</td>
+        <td>{{ item.date | safe }}</td>
     </tr>
     {% endfor %}
 </table>
