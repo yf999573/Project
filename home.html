@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/navcolor.css" type="text/css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/JS.js"></script>
     <title>Title</title>
 </head>
-
-    <div style="margin: auto;position:absolute; left:0; top:0; width:100%; height:100%">
-        <img src="img/img02.jpg" width=100% height=40%>
+<body>
+    <!--搜索框-->
+    <div style="position:absolute; left:0; top:0; width:100%; height:100%; ">
+        <div class="row" style="margin-top:140px;">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form action="/home/" method="post">
+                    <div class="input-group">
+                        <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址">
+                            <span class="input-group-btn" >
+                              <input  class="btn btn-success" type="submit" value="提取表格">提取表格</input>
+                            </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
     </div>
-
-    <nav class="navbar navbar-default" role="navigation" >
+    <!--导航条-->
+    <nav class="navbar navbar-default" role="navigation" style="margin: auto; left:0; top: 0; width:100%; height:20%">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">表格提取</a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -34,35 +46,188 @@
                     <li><a href="#">查看历史</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                    <li><a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
+                    <li><a href="#" id="btnlogon"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-
-
-     <div class="row" style="margin-top:80px">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="请输入目标网站的url地址">
-                  <span class="input-group-btn">
-                    <button  class="btn btn-success"   type="button">提取表格</button>
-                  </span>
+    <!--搜索框背景-->
+    <div class="aixuexi">
+        <img src="img/img02.jpg" width=100% height=40%>
+    </div>
+    <!--巨幕-->
+    <!--巨幕1-->
+    <div class="jumbotron" style="background-color: #3ce78c;" >
+        <div class="container">
+            <h1 class="box" style="text-align: center;color:seagreen "><strong>欢迎使用我们的网站!</strong></h1>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                   <hr style="height:0px;border:none;border-top:5px double seagreen ;"/>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color:seagreen "><strong>我们建立这个网站</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color:seagreen "><strong>以帮助用户获取目标网站的表格</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color:seagreen "><strong>并且网站有表格处理功能，让用户方便的处理数据</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <hr style="height:0px;border:none;border-top:5px double seagreen ;"/>
+                </div>
+                <div class="col-lg-2"></div>
             </div>
         </div>
-        <div class="col-lg-3"></div>
-     </div>
-
-    <!-- 16:9 aspect ratio -->
-    <div style="margin-top:93px">
-            <div class="embed-responsive embed-responsive-16by9" >
-                <iframe src="output.html" ></iframe>
-            </div>
     </div>
+    <!--巨幕2-->
+    <div class="jumbotron" style="background-color: seagreen" >
+        <div class="container">
+            <h1 style="text-align: center;color: white; padding-bottom:20px"><span class="glyphicon glyphicon-envelope"></span></h1>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: white "><strong>我们的网站正在起步阶段</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: white "><strong>功能不是很完善，还存在方方面面的问题</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: white "><strong>所以您的意见和建议对我们来说非常宝贵</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: white "><strong>如果您发现了问题，请通过邮件与我们取得联系</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: white "><strong>Email:examp@biaogetiqv.com</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--巨幕3-->
+    <div class="jumbotron" style="background-color: #3ce78c;" >
+        <div class="container">
+            <h1 style="text-align: center;color: seagreen; padding-bottom: 20px"><span class="glyphicon glyphicon-qrcode"></span></h1>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color:seagreen "><strong>我们的网站正在起步阶段</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: seagreen "><strong>功能不是很完善，还存在方方面面的问题</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: seagreen "><strong>所以您的意见和建议对我们来说非常宝贵</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: seagreen "><strong>如果您发现了问题，请通过邮件与我们取得联系。</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 style="text-align: center;color: seagreen "><strong>Email:examp@biaogetiqv.com</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--登陆窗口-->
+    <div id="corInsertHref" class="corInsertHref">
+    <div class="row">
+        <div class="col-lg-10"></div>
+        <div class="col-lg-2"  ><button type="button" id="cBtn" class="btn btn-default btn-sm btn-info">
+            <span class="glyphicon glyphicon-remove" ></span></button></div>
+    </div>
+    <form role="form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名：</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入你的用户名...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">密码：</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入你的密码...">
+        </div>
+        <div class="form-group checkbox">
+            <label>
+                <input type="checkbox">记住密码
+            </label>
 
+            <a href="#" style="margin-left: 200px">忘记密码？</a>
+        </div>
 
+        <button type="submit" class="btn btn-info btn-block">登陆</button>
 
+        <div class="form-group">
+            <p class="help-block">还没有密码？<a href="#">点击注册</a></p>
+        </div>
+    </form>
+   </div>
+   <div id="corBackground" class="corBackground"></div>
+    <!--注册窗口-->
+    <div id="corInsertHref2" class="corInsertHref">
+        <div class="row">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-2"  ><button type="button" id="cBtn2" class="btn btn-default btn-sm btn-info">
+                <span class="glyphicon glyphicon-remove" ></span></button></div>
+        </div>
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">用户名：</label>
+                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="请输入你的用户名..." onblur="blurName(this.value);">
+                <span id="checkName" class="checkName"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">密码：</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="请输入你的密码..." onblur="blurPwd(this.value);">
+                <span id="checkPwd" class="checkPwd"></span>
+                <div  style="margin-left: 200px"><span class="pwdstrength" id="ruo">弱</span>
+                <span class="pwdstrength" id="zhong" style="margin-left: 50px">中</span>
+                <span class="pwdstrength" id="qiang" style="margin-left: 100px">强</span></div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">确认密码：</label>
+                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="请输入你的密码..." onblur="blurPwdOk(this.value)">
+                <span id="checkOk" class="checkOk"></span></li>
+            </div>
+            <button type="submit" class="btn btn-info btn-block">注册</button>
+        </form>
+    </div>
+    <div id="corBackground2" class="corBackground"></div>
 </body>
 </html>

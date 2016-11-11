@@ -87,3 +87,134 @@
         background-color: #44bb82;
     }
 }
+
+.jumbotron{
+    margin:0;
+    padding:40px;
+    padding-bottom: 40px;
+}
+
+.box{
+    font-family:"方正舒体";
+    font-weight:normal;
+    padding-bottom:40px;
+}
+
+.aixuexi{
+    top: inherit;
+    width:100%;
+    height:200px;
+}
+.aixuexi img{width:100%;height:100%;}
+
+
+#corInsertHref
+{
+    position: absolute;
+    z-index: 10000;
+    width: 370px;
+    float: left;
+    display: none;
+    background-color:lightblue;
+    padding: 10px;
+}
+#corInsertHref2
+{
+    position: absolute;
+    z-index: 10000;
+    width: 370px;
+    float: left;
+    display: none;
+    background-color:lightblue;
+    padding: 10px;
+}
+#corBackground
+{
+    width:100%;
+    height:300%;
+    position: absolute;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.30;
+    -khtml-opacity:0.30;
+    opacity: 0.30;
+    z-index: 9999;
+    display: none;
+}
+#corBackground2
+{
+    width:100%;
+    height:300%;
+    position: absolute;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.30;
+    -khtml-opacity:0.30;
+    opacity: 0.30;
+    z-index: 9999;
+    display: none;
+}
+#cBtn{
+    font-size:10px;
+    color:white;
+}
+
+.content
+{
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #CCC;
+    text-align: center;
+}
+.content ul
+{
+    list-style: none;
+    padding: 0;
+}
+.content ul li
+{
+    line-height: 40px;
+}
+.checkName
+{
+    position:absolute;
+    top:99px;
+    font-weight: bold;
+    color:dodgerblue;
+    font-size: 12px;
+}
+.checkPwd
+{
+    position:absolute;
+    top: 174px;
+    font-weight: bold;
+    color:dodgerblue;
+    font-size: 12px;
+}
+.checkOk
+{
+    position:absolute;
+    top:246px;
+    font-weight: bold;
+    color:dodgerblue;
+    font-size: 12px;
+}
+.pwdstrength
+{
+    position:absolute;
+    top: 174px;
+    width: 50px;
+    height: 25px;
+    padding-top: 4px;
+    float: left;
+    background-color: #CCC;
+    color: #999;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
