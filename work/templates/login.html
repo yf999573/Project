@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/navcolor.css" type="text/css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/navcolor.css' %}" type="text/css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="js/JS.js"></script>
+    {% load static %}
+    <script src="{% static "js/JS.js" %}"></script>
     <title>Title</title>
 </head>
 <body>
@@ -46,7 +48,7 @@
                     <li><a href="#">查看历史</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
+                    <li><a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                     <li><a href="#" id="btnlogon"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -54,7 +56,8 @@
     </nav>
     <!--搜索框背景-->
     <div class="aixuexi">
-        <img src="img/img02.jpg" width=100% height=40%>
+        {% load static %}
+        <img src="{% static "img/img02.jpg" %}" width=100% height=40%>
     </div>
     <!--巨幕-->
     <!--巨幕1-->
@@ -174,7 +177,7 @@
         <div class="col-lg-2"  ><button type="button" id="cBtn" class="btn btn-default btn-sm btn-info">
             <span class="glyphicon glyphicon-remove" ></span></button></div>
     </div>
-    <form role="form" action="" method="post" enctype="multipart/form-data">
+    <form role="form" action="" method="post" value="from2" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">用户名：</label>
             <input type="text" name="username"  class="form-control" id="exampleInputEmail1" placeholder="请输入你的用户名...">
@@ -191,10 +194,10 @@
             <a href="#" style="margin-left: 200px">忘记密码？</a>
         </div>
 
-        <a href="home_showuser.html"><button type="submit" class="btn btn-info btn-block">登陆</button></a>
+        <input type="submit" value="登录" class="btn btn-info btn-block"/>
 
         <div class="form-group">
-            <p class="help-block">还没有密码？<a href="#" id="btnlogon2">点击注册</a></p>
+            <p class="help-block">还没有密码？<a href="#2" id="btnlogon2">点击注册</a></p>
         </div>
     </form>
    </div>
@@ -208,15 +211,15 @@
             <div class="col-lg-2"  ><button type="button" id="cBtn2" class="btn btn-default btn-sm btn-info">
                 <span class="glyphicon glyphicon-remove" ></span></button></div>
         </div>
-        <form role="form" form action = '' method = 'post' enctype="multipart/form-data">
+        <form role="form" form action = '' method = 'post' value="from2" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">用户名：</label>
-                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="请输入你的用户名..." onblur="blurName(this.value);">
+                <input type="text" name="username" class="form-control" id="exampleInputEmail2" placeholder="请输入你的用户名..." onblur="blurName(this.value);">
                 <span id="checkName" class="checkName"></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">密码：</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="请输入你的密码..." onblur="blurPwd(this.value);">
+                <input type="password" name="password1" class="form-control" id="exampleInputPassword2" placeholder="请输入你的密码..." onblur="blurPwd(this.value);">
                 <span id="checkPwd" class="checkPwd"></span>
                 <div  style="margin-left: 200px"><span class="pwdstrength" id="ruo">弱</span>
                 <span class="pwdstrength" id="zhong" style="margin-left: 50px">中</span>
@@ -224,10 +227,15 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">确认密码：</label>
-                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="请输入你的密码..." onblur="blurPwdOk(this.value)">
-                <span id="checkOk" class="checkOk"></span></li>
+                <input type="password" name="password2" class="form-control" id="exampleInputPassword3" placeholder="请输入你的密码..." onblur="blurPwdOk(this.value)">
+                <span id="checkOk" class="checkOk"></span>
             </div>
-            <button type="submit" class="btn btn-info btn-block" style="margin-top: 30px">注册</button>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">邮箱：</label>
+                <input type="email" name="email" class="form-control" id="exampleInputPassword3" placeholder="请输入你的邮箱地址..." onblur="blurPwdOk(this.value)">
+            </div>
+               <input type="submit" value="注册"  class="btn btn-info btn-block" style="margin-top: 30px"/>
         </form>
     </div>
     <div id="corBackground2" class="corBackground"></div>

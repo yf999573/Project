@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<style type="text/css">
+    #err{
+
+    }
+</style>
+<!--script type="text/javascript">
+    var Err=document.getElementById("err");
+    $("btn").click(function())
+</script-->
+<body>
+    <h1>注册页面：</h1>
+    <form action = '' method = 'post' enctype="multipart/form-data">
+        <input type = "text" name = "username">
+        <input type = "password" name = "password1">
+        <input type = "password" name = "password2">
+        <input type = "email" name = "email">
+        <input type="submit" value="注册" id="btn"/>
+    </form>
+    {{ 'errors' }}
+</body>
+</html>

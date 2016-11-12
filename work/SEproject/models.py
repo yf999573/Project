@@ -4,6 +4,15 @@ from django.db import models
 import urllib2
 from bs4 import BeautifulSoup
 import datetime
+
+class message(models.Model):
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=15)
+    email = models.EmailField(default= 'blank@qq.com')
+
+    def __unicode__(self):
+        return self.username
+
 # Create your models here.
 class testhtml(models.Model):
     url = models.CharField(max_length=100)
@@ -33,20 +42,11 @@ class HtmlParser(object):
         print title_node.get_text()
         print datetime.datetime.now()
         print page_url
-        #print str(soup.table)
         table_node = soup.find_all('table')
         for table in table_node:
-            #new_test = testhtml(url=page_url, title=title_node.get_text(), time=datetime.datetime.now(),date=table.prettify())
-            #new_test.save()
             print str(table)
-        #models.testhtml.objects.create(url = page_url,title = title_node.get_text(),time = datetime.datetime.now(),date = str(soup.table))
             new_test = testhtml(url = page_url,title = title_node.get_text(),time = datetime.datetime.now(),date = str(table))
             new_test.save()
-        #models.testhtml.save()
-        #p.save()
-        #print p.id
-
-
 
 class SpiderMain(object):
     def __init__(self):
@@ -55,7 +55,6 @@ class SpiderMain(object):
 
     def craw(self, root_url):
         try:
-            #print 'craw : %s' % (root_url)
             html_cont = self.downloader.download(root_url)
             new_data = self.parser.parse(root_url, html_cont)
         except:

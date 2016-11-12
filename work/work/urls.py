@@ -18,7 +18,10 @@ from django.contrib import admin
 from SEproject import views
 
 urlpatterns = [
-    url(r'^welcome/',views.welcome),
+    url(r'^login/', views.loginR),
+    url(r'^welcome',views.welcome),
+    url(r'^logout/',views.logout),
+    url(r'^search/',views.search),
     url(r'^show/',views.show),
     url(r'^admin/', admin.site.urls),
 ]

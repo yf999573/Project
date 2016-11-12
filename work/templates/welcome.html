@@ -2,22 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
 </head>
 <body>
-    <div class="row" style="margin-top:80px">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
-            <div class="input-group">
-                <form action="/welcome/" method="post">
-                    <input name="URL" type="text" class="form-control" placeholder="请输入目标网站的url地址">
-                    <span class="input-group-btn">
-                        <input  class="btn btn-success"   type="submit" value="提取表格"/>
-                    </span>
-                </form>
-            </div>
-        </div>
-        <div class="col-lg-3"></div>
-     </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        <tr>用户名：<input type="text" name="username"/></tr>
+        <tr>密  码：<input type="password" name="password1"/></tr>
+        <a href="mainview.html"><input type="submit" value="登录"></a>
+        <a href="regist.html"><input type="button" value="注册"></a>
+    </form>
 </body>
 </html>
