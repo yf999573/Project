@@ -199,7 +199,7 @@
 .checkOk
 {
     position:absolute;
-    top:246px;
+    top:250px;
     font-weight: bold;
     color:dodgerblue;
     font-size: 12px;
@@ -217,4 +217,9 @@
     font-size: 12px;
     font-weight: bold;
     text-align: center;
+}
+
+.notice
+{
+    display: none;
 }

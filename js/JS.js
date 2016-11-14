@@ -8,8 +8,28 @@ $(function() {
         $("#corInsertHref").animate({ opacity:"show"},"slow");
         autoSize($("#corInsertHref"));
     });
+
     //点击注册按钮 弹出层并初始化弹出层位置
     $("#btnlogon").click(function() {
+        $("#corBackground2").animate({ opacity:"show"},"slow");
+        $("#corInsertHref2").animate({ opacity:"show"},"slow");
+        autoSize($("#corInsertHref2"));
+    });
+
+    $("#btnlogon2").click(function() {
+
+        $("#corBackground").animate(function(){
+            $("#corBackground").stop(false,true).animate();
+        });
+        document.getElementById("corBackground").style.display="none";
+        //停止动画
+        $("#corInsertHref").animate(function(){
+            $("#corInsertHref").stop(false,true).animate();
+        });
+        document.getElementById("corInsertHref").style.display="none";
+
+        document.getElementById("exampleInputEmail1").value="";
+        document.getElementById("exampleInputPassword1").value="";
         $("#corBackground2").animate({ opacity:"show"},"slow");
         $("#corInsertHref2").animate({ opacity:"show"},"slow");
         autoSize($("#corInsertHref2"));

@@ -32,16 +32,15 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">表格提取</a>
+                <a class="navbar-brand" href="#">表格提取结果</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/welcome/">主页</a></li>
-                    <li class="active" ><a href="#">查看历史</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    {% for item in his_list %}
+                    {% for item in nov_data %}
                         {% if forloop.first %}
                             <li><a href="#" id="btnlogin">{{ item.name }}</a></li>
                         {% endif %}
@@ -66,7 +65,7 @@
                             <th>内容</th>
                         </tr>
                         </thead>
-                        {%  for item in his_list %}
+                        {%  for item in nov_data %}
                         <tbody>
                         <tr>
                             <td>{{ item.url }}</td>

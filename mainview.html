@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/navcolor.css" %}" type="text/css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {% load static %}
+    <script src="{% static "js/JS.js" %}"></script>
+    <script type="text/javascript">
+         function testnull()
+        {
+            if (document.getElementById('airline').value=='')
+            {
+                alert('请先输入URL再使用该功能！');
+                document.getElementById('airline').focus();
+            }
+        }
+    </script>
+    <title>Title</title>
+
+</head>
+<body>
+<!--搜索框-->
+<div style="position:absolute; left:0; top:0; width:100%; height:100%; ">
+    <div class="row" style="margin-top:140px;">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form action="" method="post">
+                <div class="input-group" >
+                    <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址" id="airline">
+                    <span class="input-group-btn" >
+                              <input  class="btn btn-success" type="submit" value="提取表格" onclick="testnull()">提取表格</input>
+                            </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<!--导航条-->
+<nav class="navbar navbar-default" role="navigation" style="margin: auto; left:0; top: 0; width:100%; height:20%">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">表格提取</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">主页</a></li>
+                <li><a href="/hislist/" id="ShowHistory" onclick="ShowHistory()">查看历史</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a>{{ username }}</a></li>
+                <li><a href="/logout/">退出登录</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--搜索框背景-->
+<div class="aixuexi">
+    {% load static %}
+    <img src="{% static "img/img02.jpg" %}" width=100% height=40%>
+</div>
+<!--巨幕-->
+<!--巨幕1-->
+<div class="jumbotron" style="background-color: #3ce78c;" >
+    <div class="container">
+        <h1 class="box" style="text-align: center;color:seagreen "><strong>欢迎使用我们的网站!</strong></h1>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <hr style="height:0px;border:none;border-top:5px double seagreen ;"/>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color:seagreen "><strong>我们建立这个网站</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color:seagreen "><strong>以帮助用户获取目标网站的表格</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color:seagreen "><strong>并且网站有表格处理功能，让用户方便的处理数据</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <hr style="height:0px;border:none;border-top:5px double seagreen ;"/>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</div>
+<!--巨幕2-->
+<div class="jumbotron" style="background-color: seagreen" >
+    <div class="container">
+        <h1 style="text-align: center;color: white; padding-bottom:20px"><span class="glyphicon glyphicon-envelope"></span></h1>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: white "><strong>我们的网站正在起步阶段</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: white "><strong>功能不是很完善，还存在方方面面的问题</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: white "><strong>所以您的意见和建议对我们来说非常宝贵</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: white "><strong>如果您发现了问题，请通过邮件与我们取得联系</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: white "><strong>Email:examp@biaogetiqv.com</strong></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!--巨幕3-->
+<div class="jumbotron" style="background-color: #3ce78c;" >
+    <div class="container">
+        <h1 style="text-align: center;color: seagreen; padding-bottom: 20px"><span class="glyphicon glyphicon-qrcode"></span></h1>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color:seagreen "><strong>我们的网站正在起步阶段</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: seagreen "><strong>功能不是很完善，还存在方方面面的问题</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: seagreen "><strong>所以您的意见和建议对我们来说非常宝贵</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: seagreen "><strong>如果您发现了问题，请通过邮件与我们取得联系。</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 style="text-align: center;color: seagreen "><strong>Email:examp@biaogetiqv.com</strong></h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
