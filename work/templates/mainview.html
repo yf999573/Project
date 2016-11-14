@@ -14,7 +14,18 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {% load static %}
     <script src="{% static "js/JS.js" %}"></script>
+    <script type="text/javascript">
+         function testnull()
+        {
+            if (document.getElementById('airline').value=='')
+            {
+                alert('请先输入URL再使用该功能！');
+                document.getElementById('airline').focus();
+            }
+        }
+    </script>
     <title>Title</title>
+
 </head>
 <body>
 <!--搜索框-->
@@ -23,10 +34,10 @@
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
             <form action="" method="post">
-                <div class="input-group">
-                    <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址">
+                <div class="input-group" >
+                    <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址" id="airline">
                     <span class="input-group-btn" >
-                              <input  class="btn btn-success" type="submit" value="提取表格" >提取表格</input>
+                              <input  class="btn btn-success" type="submit" value="提取表格" onclick="testnull()">提取表格</input>
                             </span>
                 </div>
             </form>
@@ -45,7 +56,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">主页</a></li>
-                <li><a href="/hislist/">查看历史</a></li>
+                <li><a href="/hislist/" id="ShowHistory" onclick="ShowHistory()">查看历史</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a>{{ username }}</a></li>

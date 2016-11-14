@@ -6,6 +6,7 @@ from SEproject import models
 from django.template import Context
 from django.http.response import HttpResponseRedirect
 from django.http.response import HttpResponse
+from django.shortcuts import render
 from SEproject.models import  userdata,user
 from django.template import RequestContext
 # Create your views here.
@@ -83,8 +84,8 @@ def search(request):
     if request.method == "POST":
         user_name = request.session["username"]
         URL = request.POST["URL"]
-        if(URL == None):
-            return HttpResponse("输入URL地址为空！")
+        if len(URL) == 0:
+            return HttpResponseRedirect("/welcome/")
         else:
             obj_spider = SpiderMain()
             nov_times = obj_spider.craw(URL,user_name)
@@ -105,7 +106,7 @@ def hislist(request):
     user_name = request.session["username"]
     cont = models.userdata.objects.filter(name = user_name).count()
     if(cont == False):
-        return HttpResponse("无历史查询纪录！")
+        return render(request,'Dishis_show.html')
     else:
         his_list = models.userdata.objects.filter(name = user_name)
         datas = Context({"his_list":his_list})

@@ -32,15 +32,16 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">表格提取结果</a>
+                <a class="navbar-brand" href="#">表格提取</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/welcome/">主页</a></li>
+                    <li class="active" ><a href="#">查看历史</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    {% for item in nov_data %}
+                    {% for item in his_list %}
                         {% if forloop.first %}
                             <li><a href="#" id="btnlogin">{{ item.name }}</a></li>
                         {% endif %}
@@ -50,11 +51,14 @@
         </div><!-- /.container-fluid -->
     </nav>
 
+
+
 <div style="top: 70px; width:100%; ">
     <div class="row" style="margin-top:50px;">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="tbl-content">
+            <h3 style="align-content: center;color: white">抱歉您还没有历史纪录！</h3>
             <input type="search" class="light-table-filter" data-table="order-table" placeholder="请输入您要查找的内容">
                     <table class="order-table" cellpadding="0" cellspacing="0" border="0">
                         <thead>
@@ -65,7 +69,7 @@
                             <th>内容</th>
                         </tr>
                         </thead>
-                        {%  for item in nov_data %}
+                        {%  for item in his_list %}
                         <tbody>
                         <tr>
                             <td>{{ item.url }}</td>

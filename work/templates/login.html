@@ -14,6 +14,11 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {% load static %}
     <script src="{% static "js/JS.js" %}"></script>
+    <script>
+        function hadlogin() {
+                alert("请先登录在使用该功能谢谢！")
+         }
+    </script>
     <title>Title</title>
 </head>
 <body>
@@ -22,14 +27,14 @@
         <div class="row" style="margin-top:140px;">
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
-                <form action="/home/" method="post">
+
                     <div class="input-group">
                         <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址">
                             <span class="input-group-btn" >
-                              <input  class="btn btn-success" type="submit" value="提取表格">提取表格</input>
+                              <input  class="btn btn-success" type="submit" value="提取表格" id="gittable" onclick="hadlogin()">提取表格</input>
                             </span>
                     </div>
-                </form>
+
             </div>
             <div class="col-lg-3"></div>
         </div>
@@ -45,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">主页</a></li>
-                    <li><a href="#">查看历史</a></li>
+                    <li><a href="#" onclick="hadlogin()">查看历史</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -202,9 +207,7 @@
     </form>
    </div>
    <div id="corBackground" class="corBackground"></div>
-    <!--注册窗口!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--注册窗口-->
     <div id="corInsertHref2" class="corInsertHref">
         <div class="row">
             <div class="col-lg-10"></div>
