@@ -19,9 +19,9 @@ from SEproject import views
 
 urlpatterns = [
     url(r'^login/', views.loginR),
-    url(r'^welcome',views.welcome),
+    url(r'^welcome/',views.operate),
     url(r'^logout/',views.logout),
     url(r'^search/',views.search),
-    url(r'^show/',views.show),
+    url(r'^hislist/',views.hislist),
     url(r'^admin/', admin.site.urls),
 ]
