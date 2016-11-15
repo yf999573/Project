@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^logout/',views.logout),
     url(r'^search/',views.search),
     url(r'^hislist/',views.hislist),
+    url(r'^someview/',views.some_view),
     url(r'^admin/', admin.site.urls),
 ]

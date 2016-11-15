@@ -62,5 +62,3 @@ class SpiderMain(object):
         except:
             print "craw failed!"
 
-
-

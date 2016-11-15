@@ -8,6 +8,11 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/navcolor.css' %}" type="text/css">
+    <style type="text/css">
+        .Err{
+            display: none;
+        }
+    </style>
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -18,6 +23,24 @@
         function hadlogin() {
                 alert("请先登录在使用该功能谢谢！")
          }
+
+         function Checklog() {
+                var oErr= {{ error }};
+                if(oErr == "error")
+                {
+                    alert("111")
+                }
+         }
+
+         function  Checklogin() {
+             setInterval(function Checklog(){var oErr= {{ error }};
+                                                if(oErr == "error")
+                                                {
+                                                    alert("111")
+                                                }},1000)
+         }
+
+
     </script>
     <title>Title</title>
 </head>
@@ -51,9 +74,10 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">主页</a></li>
                     <li><a href="#" onclick="hadlogin()">查看历史</a></li>
+                    <li id="Err" class="Err" >{{ error }}</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                    <li><a href="#" id="btnlogin" onclick="Checklogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                     <li><a href="#" id="btnlogon"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -7,6 +7,8 @@ from django.template import Context
 from django.http.response import HttpResponseRedirect
 from django.http.response import HttpResponse
 from django.shortcuts import render
+from bs4 import BeautifulSoup
+import csv
 from SEproject.models import  userdata,user
 from django.template import RequestContext
 # Create your views here.
@@ -40,8 +42,8 @@ def login(request):
             request.session['username'] = username
             return response
         else:
-            response =  HttpResponse("用户名或密码错误，请重新输入！")
-            response =  HttpResponseRedirect('/login')
+            response =  ["用户名或密码错误，请重新输入！"]
+            response =  HttpResponseRedirect('/login/')
             return response
     else:
         return render_to_response("login.html")
@@ -111,3 +113,19 @@ def hislist(request):
         his_list = models.userdata.objects.filter(name = user_name)
         datas = Context({"his_list":his_list})
         return render_to_response('his_show.html',datas)
+#导出文件
+def some_view(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="datas.csv"'
+    writer = csv.writer(response)
+    user_name = request.session["username"]
+    table_data = models.userdata.objects.filter(name = user_name)
+    for item in table_data:
+        soup_all = BeautifulSoup(item.date)
+        tr_nov = soup_all.find_all('tr')
+        for tr in tr_nov:
+            br_tds = tr.find_all(['th', 'td'])
+            tds = [td.get_text().encode('gbk') for td in br_tds]
+            writer.writerow(tds)
+        writer.writerow([])
+    return response
