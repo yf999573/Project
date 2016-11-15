@@ -5,27 +5,73 @@
     <title>welcome login</title>
 </head>
 <body>
-    <p>Account Login </p>
+    <!--登陆窗口-->
+    <div id="corInsertHref" class="corInsertHref">
+    <div class="row">
+        <div class="col-lg-10"></div>
+        <div class="col-lg-2"  ><button type="button" id="cBtn" class="btn btn-default btn-sm btn-info">
+            <span class="glyphicon glyphicon-remove" ></span></button></div>
+    </div>
+    <form role="form" action="" method="post" value="from2" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名：</label>
+            <input type="text" name="username"  class="form-control" id="exampleInputEmail1" placeholder="请输入你的用户名...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">密码：</label>
+            <input type="password" name="password"  class="form-control" id="exampleInputPassword1" placeholder="请输入你的密码...">
+        </div>
+        <div class="form-group checkbox">
+            <label>
+                <input type="checkbox">记住密码
+            </label>
 
-    {% if errors %}
-        <li>
-            {% for error in errors %}
-             <p style="color: red;">
-                Please correct the error: {{error}} below.
-             </p>
-              {% endfor %}
-        </li>
-    {% endif %}
+            <a href="#" style="margin-left: 200px">忘记密码？</a>
+        </div>
 
-    <form action="" method="post">
-        <input type = 'text' placeholder="Please input account" name="account">
-       <br>
+        <input type="submit" value="登录" class="btn btn-info btn-block"/>
 
-        <input type = 'password' placeholder="Please input password" name="password">
-        <br>
-        <input type = 'submit' placeholder="Login" value="Login">
-        <br>
-        <a href="/account/register">register new accout</a>
+        <div class="form-group">
+            <p class="help-block">还没有密码？<a href="#2" id="btnlogon2">点击注册</a></p>
+        </div>
     </form>
+   </div>
+   <div id="corBackground" class="corBackground"></div>
+    <!--注册窗口-->
+    <div id="corInsertHref2" class="corInsertHref">
+        <div class="row">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-2"  ><button type="button" id="cBtn2" class="btn btn-default btn-sm btn-info">
+                <span class="glyphicon glyphicon-remove" ></span></button></div>
+        </div>
+        <form role="form" form action = '' method = 'post' value="from2" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleInputEmail1">用户名：</label>
+                <input type="text" name="username" class="form-control" id="exampleInputEmail2" placeholder="请输入你的用户名..." onblur="blurName(this.value);">
+                <span id="checkName" class="checkName"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">密码：</label>
+                <input type="password" name="password1" class="form-control" id="exampleInputPassword2" placeholder="请输入你的密码..." onblur="blurPwd(this.value);">
+                <span id="checkPwd" class="checkPwd"></span>
+                <div  style="margin-left: 200px"><span class="pwdstrength" id="ruo">弱</span>
+                <span class="pwdstrength" id="zhong" style="margin-left: 50px">中</span>
+                <span class="pwdstrength" id="qiang" style="margin-left: 100px">强</span></div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">确认密码：</label>
+                <input type="password" name="password2" class="form-control" id="exampleInputPassword3" placeholder="请输入你的密码..." onblur="blurPwdOk(this.value)">
+                <span id="checkOk" class="checkOk"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">邮箱：</label>
+                <input type="email" name="email" class="form-control" id="exampleInputPassword3" placeholder="请输入你的邮箱地址..." onblur="blurPwdOk(this.value)">
+            </div>
+               <input type="submit" value="注册"  class="btn btn-info btn-block" style="margin-top: 30px"/>
+        </form>
+    </div>
+    <div id="corBackground2" class="corBackground"></div>
+
 </body>
 </html>

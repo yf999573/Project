@@ -7,6 +7,59 @@ from django.shortcuts import render
 from django.template import Context
 import datetime
 # Create your views here.
+#用户注册管理
+def regist(request):
+    if request.method == "POST":
+        errors = []
+        username = request.POST['username']
+        filterResult = models.user.objects.filter(username = username)
+        if len(filterResult)>0:
+            error = "该用户名已注册！"
+            errors = Context({"errors": error})
+            return render_to_response('erroe.html', errors)
+        else:
+            password1 = request.POST['password1']
+            password2 = request.POST['password2']
+            email = request.POST['email']
+            new_user = models.user.objects.create(username=username, password=password2,email=email)
+            new_user.save()
+            response = HttpResponseRedirect('/welcome/')
+            request.session['username'] = username
+            return response
+    else:
+        return render_to_response('login.html')
+#用户登录管理
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        old_user = models.user.objects.filter(username = username,password = password)
+        if old_user:
+            response =  HttpResponseRedirect('/welcome/')
+            request.session['username'] = username
+            return response
+        else:
+            error =  "用户名或密码错误，请重新输入！"
+            errors = Context({"errors": error})
+            return render_to_response('erroe.html',errors)
+    else:
+        return render_to_response("login.html")
+#用户管理行为判断
+def loginR(request):
+    try:
+        password1 = request.POST['password1']
+        loginFlag = False
+    except:
+        loginFlag = True
+    if loginFlag:
+        return login(request)
+    else:
+        return regist(request)
+
+# 用户登出管理
+def logout(request):
+    del request.session['username']
+    return HttpResponseRedirect('/login/')
 
 def alogin(request):
     errors = []
@@ -32,47 +85,6 @@ def alogin(request):
             else:
                 errors.append('invaild user')
     return render_to_response('account/login.html', {'errors': errors})
-
-
-def register(request):
-    errors = []
-    account = None
-    password = None
-    password2 = None
-    email = None
-    CompareFlag = False
-
-    if request.method == 'POST':
-        if not request.POST.get('account'):
-            errors.append('Please Enter account')
-        else:
-            account = request.POST.get('account')
-        if not request.POST.get('password'):
-            errors.append('Please Enter password')
-        else:
-            password = request.POST.get('password')
-        if not request.POST.get('password2'):
-            errors.append('Please Enter password2')
-        else:
-            password2 = request.POST.get('password2')
-        if not request.POST.get('email'):
-            errors.append('Please Enter email')
-        else:
-            email = request.POST.get('email')
-
-        if password is not None and password2 is not None:
-            if password == password2:
-                CompareFlag = True
-            else:
-                errors.append('password2 is diff password ')
-
-        if account is not None and password is not None and password2 is not None and email is not None and CompareFlag:
-            user = User.objects.create_user(account, email, password)
-            user.is_active = True
-            user.save
-            return HttpResponseRedirect('/account/login')
-
-    return render_to_response('account/register.html', {'errors': errors})
 
 
 def alogout(request):
