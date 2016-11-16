@@ -19,7 +19,9 @@ def regist(request):
         username = request.POST['username']
         filterResult = models.user.objects.filter(username = username)
         if len(filterResult)>0:
-            return HttpResponse("该用户名已注册！")
+            error = "该用户名已注册！"
+            errors = Context({"errors": error})
+            return render_to_response('erroe.html', errors)
         else:
             password1 = request.POST['password1']
             password2 = request.POST['password2']
@@ -42,9 +44,9 @@ def login(request):
             request.session['username'] = username
             return response
         else:
-            response =  ["用户名或密码错误，请重新输入！"]
-            response =  HttpResponseRedirect('/login/')
-            return response
+            error =  "用户名或密码错误，请重新输入！"
+            errors = Context({"errors": error})
+            return render_to_response('erroe.html',errors)
     else:
         return render_to_response("login.html")
 #用户管理行为判断
@@ -92,14 +94,18 @@ def search(request):
             obj_spider = SpiderMain()
             nov_times = obj_spider.craw(URL,user_name)
             if (nov_times == None):
-                return HttpResponse("输入URL地址有误！")
+                error = "输入URL地址有误！"
+                errors = Context({"errors": error})
+                return  render_to_response('show_error.html',errors)
             else:
                 data = models.userdata.objects.filter(name=user_name, time=nov_times)
                 if len(data)>0:
                     datas = Context({"nov_data": data})
                     return render_to_response('show.html', datas)
                 else:
-                    return HttpResponse("该网页无格式化数据！")
+                    error = "该网页无格式化数据！"
+                    errors = Context({"errors": error})
+                    return render_to_response('show_error.html', errors)
     else:
         return render_to_response('mainview.html')
 

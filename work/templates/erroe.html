@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--[if IE 8]><style>.ie8 .alert-circle,.ie8 .alert-footer{display:none}.ie8 .alert-box{padding-top:75px}.ie8 .alert-sec-text{top:45px}</style><![endif]-->
+<title>相关提示信息</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/error.css' %}" type="text/css">
+</head>
+<body>
+    <div id="js-alert-box" class="alert-box">
+        <svg class="alert-circle" width="234" height="234">
+              <circle cx="117" cy="117" r="108" fill="#FFF" stroke="#43AEFA" stroke-width="17"></circle>
+              <circle id="js-sec-circle" class="alert-sec-circle" cx="117" cy="117" r="108" fill="transparent" stroke="#F4F1F1" stroke-width="18" transform="rotate(-90 117 117)"></circle>
+              <text class="alert-sec-unit" x="82" y="172" fill="#BDBDBD">secs</text>
+        </svg>
+        <div id="js-sec-text" class="alert-sec-text"></div>
+        <div class="alert-body">
+            <div id="js-alert-head" class="alert-head"></div>
+        </div>
+    </div>
+<script>
+function alertSet(e) {
+    document.getElementById("js-alert-box").style.display = "block",
+    document.getElementById("js-alert-head").innerHTML = e;
+    var t = 3,
+    n = document.getElementById("js-sec-circle");
+    document.getElementById("js-sec-text").innerHTML = t,
+    setInterval(function() {
+        if (0 == t){
+			location.href="/login/";//#时间到后跳转地址
+		}else {
+            t -= 1,
+            document.getElementById("js-sec-text").innerHTML = t;
+            var e = Math.round(t / 5 * 735);
+            n.style.strokeDashoffset = e - 735
+        }
+    },
+    970);
+}
+alertSet("{{ errors }}"+"正在返回主页");
+</script>
+<!-- 代码部分end -->
+</body>
+</html>

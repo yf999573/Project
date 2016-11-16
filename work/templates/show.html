@@ -18,7 +18,7 @@
     <script src="{% static "js/JS.js" %}"></script>
     {% load static %}
     <script src="{% static "js/show.js" %}"></script>
-    <title>Title</title>
+    <title>提取表格展示页</title>
 </head>
 <body>
 <div class="sky" style="position:absolute;width:100%;left:0; top: 0; width:100%; height:100% ">
@@ -28,44 +28,45 @@
 </div>
 
 <!--导航条-->
-    <nav class="navbar navbar-default" role="navigation" style="margin: auto; left:0; top: 0; width:100%; ">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">表格提取结果</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/welcome/">主页</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    {% for item in nov_data %}
+<nav class="navbar navbar-default" role="navigation" style="margin: auto; left:0; top: 0; width:100%; ">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">表格提取</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/welcome/">主页</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% for item in nov_data %}
                         {% if forloop.first %}
                             <li><a href="#" id="btnlogin">{{ item.name }}</a></li>
                         {% endif %}
                     {% endfor %}
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 
 <div style="top: 70px; width:100%; ">
-    <div class="row" style="margin-top:50px;">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+    <div class="row" style="margin-top:25px;">
+            <input type="search" class="col-md-8 col-md-offset-1 light-table-filter" data-table="order-table" placeholder="请输入您要查找的内容" style="padding: 6px 12px;">
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-10 col-md-offset-1" style="padding: 0px !important;">
             <div class="tbl-content">
-            <input type="search" class="light-table-filter" data-table="order-table" placeholder="请输入您要查找的内容">
-                    <table class="order-table" cellpadding="0" cellspacing="0" border="0">
-                        <thead>
-                        <tr>
-                            <th>URL地址</th>
-                            <th>搜索时间</th>
-                            <th>主题词</th>
-                            <th>内容</th>
-                        </tr>
-                        </thead>
-                        {%  for item in nov_data %}
+                <table class="order-table" cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                    <tr>
+                        <th>URL地址</th>
+                        <th>搜索时间</th>
+                        <th>主题词</th>
+                        <th>内容</th>
+                    </tr>
+                    </thead>
+                    {% for item in nov_data %}
                         <tbody>
                         <tr>
                             <td>{{ item.url }}</td>
@@ -74,9 +75,9 @@
                             <td>{{ item.date | safe }}</td>
                         </tr>
                         </tbody>
-                        {% endfor %}
-                    </table>
-                </div>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 </div>

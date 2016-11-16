@@ -21,28 +21,10 @@
     <script src="{% static "js/JS.js" %}"></script>
     <script>
         function hadlogin() {
-                alert("请先登录在使用该功能谢谢！")
+                alert("请先登录再使用该功能谢谢！")
          }
-
-         function Checklog() {
-                var oErr= {{ error }};
-                if(oErr == "error")
-                {
-                    alert("111")
-                }
-         }
-
-         function  Checklogin() {
-             setInterval(function Checklog(){var oErr= {{ error }};
-                                                if(oErr == "error")
-                                                {
-                                                    alert("111")
-                                                }},1000)
-         }
-
-
     </script>
-    <title>Title</title>
+    <title>网站首页</title>
 </head>
 <body>
     <!--搜索框-->
@@ -77,7 +59,7 @@
                     <li id="Err" class="Err" >{{ error }}</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="btnlogin" onclick="Checklogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                    <li><a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                     <li><a href="#" id="btnlogon"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
