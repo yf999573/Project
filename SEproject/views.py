@@ -56,6 +56,11 @@ def loginR(request):
     else:
         return regist(request)
 
+# 找回密码
+def findback():
+    return 0
+
+
 # 用户登出管理
 def logout(request):
     del request.session['username']
