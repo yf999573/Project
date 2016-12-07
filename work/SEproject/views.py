@@ -99,9 +99,19 @@ def search(request):
                 return  render_to_response('show_error.html',errors)
             else:
                 data = models.userdata.objects.filter(name=user_name, time=nov_times)
-                if len(data)>0:
-                    datas = Context({"nov_data": data})
-                    return render_to_response('show.html', datas)
+                if data.count() > 0:
+                    table_list = []
+                    for item in data:
+                        soup = BeautifulSoup(item.date)
+                        tr_node = soup.find_all('tr')
+                        tr_list = []
+                        for tr in tr_node:
+                            hd_data = tr.find_all(['th', 'td'])
+                            hds = [hd.get_text() for hd in hd_data]
+                            tr_list.append(hds)
+                        table_list.append(tr_list)
+                    data_set = Context({"table_list": table_list})
+                    return render_to_response('show.html', data_set)
                 else:
                     error = "该网页无格式化数据！"
                     errors = Context({"errors": error})
@@ -131,7 +141,7 @@ def some_view(request):
         tr_nov = soup_all.find_all('tr')
         for tr in tr_nov:
             br_tds = tr.find_all(['th', 'td'])
-            tds = [td.get_text().encode('gbk') for td in br_tds]
+            tds = [td.get_text().encode('gb18030') for td in br_tds]
             writer.writerow(tds)
         writer.writerow([])
     return response

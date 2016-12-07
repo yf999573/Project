@@ -45,7 +45,7 @@ class HtmlParser(object):
         title_node = soup.find('title')
         table_node = soup.find_all('table')
         for table in table_node:
-            new_test = userdata(name=name,url = page_url,title = title_node.get_text(),time = times,date = str(table))
+            new_test = userdata(name=name,url = page_url,title = title_node.get_text(),time = times,date = table.prettify())
             new_test.save()
 
 #主程序处理
