@@ -26,11 +26,16 @@ def regist(request):
             password1 = request.POST['password1']
             password2 = request.POST['password2']
             email = request.POST['email']
-            new_user = models.user.objects.create(username=username, password=password2,email=email)
-            new_user.save()
-            response = HttpResponseRedirect('/welcome/')
-            request.session['username'] = username
-            return response
+            if not email:
+                error = "验证邮箱不可为空！"
+                errors = Context({"errors":error})
+                return render_to_response("erroe.html",errors)
+            else:
+                new_user = models.user.objects.create(username=username, password=password2,email=email)
+                new_user.save()
+                response = HttpResponseRedirect('/welcome/')
+                request.session['username'] = username
+                return response
     else:
         return render_to_response('login.html')
 #用户登录管理
@@ -38,17 +43,27 @@ def login(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        old_user = models.user.objects.filter(username = username,password = password)
+        old_user = models.user.objects.filter(username = username)
         if old_user:
-            response =  HttpResponseRedirect('/welcome/')
-            request.session['username'] = username
-            return response
+            old_user_pwd=models.user.objects.filter(username=username,password=password)
+            if old_user_pwd:
+                response =  HttpResponseRedirect('/welcome/')
+                request.session['username'] = username
+                return response
+            else:
+                error = "密码错误，请重新输入！"
+                errors = Context({"errors": error})
+                return render_to_response('erroe.html', errors)
         else:
-            error =  "用户名或密码错误，请重新输入！"
+            error =  "用户不存在，请重新输入！"
             errors = Context({"errors": error})
             return render_to_response('erroe.html',errors)
     else:
         return render_to_response("login.html")
+
+def test(request):
+    return render_to_response("change.html");
+
 #用户管理行为判断
 def loginR(request):
     try:
@@ -64,7 +79,7 @@ def loginR(request):
 # 用户登出管理
 def logout(request):
     del request.session['username']
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/user/')
 
 #主页操作判断
 def operate(request):
@@ -130,7 +145,7 @@ def hislist(request):
         datas = Context({"his_list":his_list})
         return render_to_response('his_show.html',datas)
 #导出文件
-def some_view(request):
+def outfile(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="datas.csv"'
     writer = csv.writer(response)
