@@ -61,6 +61,31 @@ def login(request):
     else:
         return render_to_response("login.html")
 
+#用户密码找回
+def changepwd(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        exist_user = models.user.objects.filter(username=username)
+        if exist_user:
+            exist__mail = models.user.objects.filter(username=username,email=email)
+            if exist__mail:
+                exist__mail.update(password = password)
+                response = HttpResponseRedirect('/user/')
+                return response
+            else:
+                error = "验证邮箱信息错误！"
+                errors = Context({"errors": error})
+                return render_to_response('erroe.html', errors)
+        else:
+            error = "用户名不存在！"
+            errors = Context({"errors": error})
+            return render_to_response('erroe.html', errors)
+    else:
+        response = HttpResponseRedirect('/user/')
+        return response
+
 def test(request):
     return render_to_response("change.html");
 
