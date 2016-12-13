@@ -20,6 +20,7 @@
     <script src="{% static "js/show.js" %}"></script>
     <script type="text/javascript">
         function moveUp(_a){
+
             var _row = _a.parentNode.parentNode;
             var _node = _row.previousSibling;
             while(_node && _node.nodeType != 1){
@@ -28,6 +29,8 @@
               if(_node){
                 swapNode(_row,_node);
               }
+            _a.stopPropagation();
+            return false;
             }
         function moveDown(_a){
             var _row = _a.parentNode.parentNode;
@@ -39,6 +42,8 @@
               if(_node){
                 swapNode(_row,_node);
               }
+            _a.stopPropagation();
+            return false;
             }
         function swapNode(node1,node2){
               //获取父结点
@@ -52,6 +57,8 @@
               //将node1插入到原来node2的位置
               if(_t2)_parent.insertBefore(node1,_t2);
               else _parent.appendChild(node1);
+            _a.stopPropagation();
+            return false;
             }
     </script>
     <script type="text/javascript">
@@ -60,8 +67,11 @@
             i = r.parentNode.parentNode.rowIndex;
             var oi = r.parentNode.parentNode.parentNode;
             oi.deleteRow(i)
+            return false;
         }
     </script>
+    {% load static %}
+    <script src="{% static "js/table_cz.js" %}"></script>
     <title>提取表格展示页</title>
 </head>
 <body>
@@ -96,28 +106,28 @@
         <div class="row" style="margin-top: 20px;">
             <div class="col-md-10 col-md-offset-1" style="padding: 0px !important;">
                 <div class="tbl-content">
-                    <table id="myTable" class="order-table"  cellpadding="0" cellspacing="0" border="0">
+                    <table id="myTable" class="order-table" class="heavyTable"  cellpadding="0" cellspacing="0" border="0">
+                    <tbody style="!important;width:100%;!important;max-width: 600px!important;">
                         {% for item_tr in item_table %}
                             {% if forloop.first %}
-                                <tr>
                                     {% for item_hd in item_tr %}
                                         <th>{{ item_hd | safe }}</th>
                                     {% endfor %}
-                                    <th>操作 </th>
-                                </tr>
+                                    <th>操作</th>
                             {% else %}
                                 <tr>
                                     {% for item_hd in item_tr %}
                                         <td>{{ item_hd | safe }}</td>
                                     {% endfor %}
-                                    <td>
-                                        <input type="button" value="删除" onclick="deleteRew(this)">
-                                        <a href="javascript:void(0)" onclick="moveUp(this)">上移</a>
-                                        <a href="javascript:void(0)" onclick="moveDown(this)">下移</a>
-                                    </td>
+                                    <th>
+                                        <input id="up" class="btn btn-info" type="button" value="上移" onclick="moveUp(this)">
+                                        <input class="btn btn-info" type="button" value="下移" onclick="moveDown(this)">
+                                        <input class="btn btn-danger" type="button" value="删除" onclick="deleteRew(this)">
+                                    </th>
                                 </tr>
                             {% endif %}
                         {% endfor %}
+                    </tbody>
                     </table>
                 </div>
             </div>

@@ -13,21 +13,16 @@
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     {% load static %}
-    <script src="{% static "js/JS.js" %}"></script>
-    {% load static %}
     <script src="{% static "js/jquery.1.10.1.min.js" %}"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-             function testnull()
-            {
-                if (document.getElementById('airline').value=='')
-                {
-                    alert('请先输入URL再使用该功能！');
-                    document.getElementById('airline').focus();
-                }
-            }
-        </script>
+    {% load static %}
+    <script src="{% static "js/JS.js" %}"></script>
+    <script>
+        function hadlogin() {
+                alert("请先登录再使用该功能谢谢！")
+         }
+    </script>
     <title>网站首页</title>
 </head>
 <body>
@@ -39,23 +34,21 @@
         <div class="min-banner">
             <div class="minb_cen">
             <div class="title"></div>
-             <!--搜索框-->
-                <div style="position:absolute; left:0; top:0; width:100%; height:100%; ">
-                    <div class="row" style="margin-top:140px;">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <form action="" method="post">
-                                <div class="input-group" >
-                                    <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址" id="airline">
-                                    <span class="input-group-btn" >
-                                              <input  class="btn btn-success" type="submit" value="提取表格" onclick="testnull()">提取表格</input>
-                                            </span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-3"></div>
-                    </div>
+                <!--搜索框-->
+    <div style="position:absolute; left:0; top:0; width:100%; height:100%; ">
+        <div class="row" style="margin-top:140px;">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input name="URL" type="text"  class="form-control" placeholder="请输入目标网站的url地址">
+                    <span class="input-group-btn" >
+                        <input  class="btn btn-success" type="submit" value="提取表格" id="gittable" onclick="hadlogin()">提取表格</input>
+                    </span>
                 </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
             </div>
         </div>
         <div class="mask"></div>
@@ -67,15 +60,17 @@
             <div class="menu-bar">
                 <div class="left-part">
                     <a id="huaban" href="/user/"></a>
-                    <a href="#" class="active">主页</a>
-                    <a href="/hislist/" id="ShowHistory" onclick="ShowHistory()">查看历史</a>
+                    <a href="/user/" class="active">主页</a>
+                    <a href="#" onclick="hadlogin()">查看历史</a>
                 </div>
-                <div class="left-part">
+
+                <div class="login-nav">
                     <ul class="nav navbar-nav navbar-right">
-                        <a href="#" id="btnlogin">{{ username }}</a>
-                        <a href="/logout/" id="btnlogon">登出</a>
-                    </ul>
+                    <a href="#" id="btnlogin"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+                    <a href="#" id="btnlogon"><span class="glyphicon glyphicon-user"></span> 注册</a>
+                </ul>
                 </div>
+            </div>
         </div>
     </div>
     </div>
@@ -251,7 +246,7 @@
 
             <div class="form-group">
                 <label for="exampleInputPassword1">邮箱：</label>
-                <input type="email" name="email" class="form-control" id="exampleInputPassword3" placeholder="请输入你的邮箱地址..." onblur="blurPwdOk(this.value)">
+                <input type="email" name="email" class="form-control" id="exampleInputPassword4" placeholder="请输入你的邮箱地址...">
             </div>
                <input type="submit" value="注册"  class="btn btn-info btn-block" style="margin-top: 30px"/>
         </form>
