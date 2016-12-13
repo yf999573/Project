@@ -8,8 +8,6 @@ from django.http.response import HttpResponseRedirect
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from bs4 import BeautifulSoup
-from reportlab.pdfgen import canvas
-import pdfcrowd
 import csv
 from SEproject.models import  userdata,user
 from django.template import RequestContext
@@ -23,7 +21,7 @@ def regist(request):
         if len(filterResult)>0:
             error = "该用户名已注册！"
             errors = Context({"errors": error})
-            return render_to_response('erroe.html', errors)
+            return render_to_response('test.html', errors)
         else:
             password1 = request.POST['password1']
             password2 = request.POST['password2']
@@ -31,7 +29,7 @@ def regist(request):
             if not email:
                 error = "验证邮箱不可为空！"
                 errors = Context({"errors":error})
-                return render_to_response("erroe.html",errors)
+                return render_to_response("test.html",errors)
             else:
                 new_user = models.user.objects.create(username=username, password=password2,email=email)
                 new_user.save()
@@ -39,7 +37,9 @@ def regist(request):
                 request.session['username'] = username
                 return response
     else:
-        return render_to_response('login.html')
+        return render_to_response('login2.html')
+        #return render_to_response('login.html')
+
 #用户登录管理
 def login(request):
     if request.method == "POST":
@@ -55,13 +55,14 @@ def login(request):
             else:
                 error = "密码错误，请重新输入！"
                 errors = Context({"errors": error})
-                return render_to_response('erroe.html', errors)
+                return render_to_response('test.html', errors)
         else:
-            error =  "用户不存在，请重新输入！"
+            error =  "用户不存在，请检查后再试！"
             errors = Context({"errors": error})
-            return render_to_response('erroe.html',errors)
+            return render_to_response('test.html',errors)
     else:
-        return render_to_response("login.html")
+        return render_to_response("login2.html")
+        #return render_to_response("login.html")
 
 #用户密码找回
 def changepwd(request):
@@ -79,11 +80,11 @@ def changepwd(request):
             else:
                 error = "验证邮箱信息错误！"
                 errors = Context({"errors": error})
-                return render_to_response('erroe.html', errors)
+                return render_to_response('test.html', errors)
         else:
             error = "用户名不存在！"
             errors = Context({"errors": error})
-            return render_to_response('erroe.html', errors)
+            return render_to_response('test.html', errors)
     else:
         response = HttpResponseRedirect('/user/')
         return response
@@ -126,6 +127,42 @@ def welcome(request):
     return render_to_response('mainview.html',{'username':username})
 
 #URL爬取管理
+# def search(request):
+#     if request.method == "POST":
+#         user_name = request.session["username"]
+#         URL = request.POST["URL"]
+#         if len(URL) == 0:
+#             return HttpResponseRedirect("/welcome/")
+#         else:
+#             obj_spider = SpiderMain()
+#             nov_times = obj_spider.craw(URL,user_name)
+#             if (nov_times == None):
+#                 error = "输入URL地址有误！"
+#                 errors = Context({"errors": error})
+#                 return  render_to_response('show_error.html',errors)
+#             else:
+#                 data = models.userdata.objects.filter(name=user_name, time=nov_times)
+#                 if data.count() > 0:
+#                     table_list = []
+#                     for item in data:
+#                         soup = BeautifulSoup(item.date)
+#                         tr_node = soup.find_all('tr')
+#                         tr_list = []
+#                         for tr in tr_node:
+#                             hd_data = tr.find_all(['th', 'td'])
+#                             hds = [hd.get_text() for hd in hd_data]
+#                             tr_list.append(hds)
+#                         table_list.append(tr_list)
+#                     data_set = Context({"table_list": table_list})
+#                     return render_to_response('show.html', data_set)
+#                 else:
+#                     error = "该网页无格式化数据！"
+#                     errors = Context({"errors": error})
+#                     return render_to_response('show_error.html', errors)
+#     else:
+#         return render_to_response('mainview.html')
+
+#URL爬取管理
 def search(request):
     if request.method == "POST":
         user_name = request.session["username"]
@@ -141,16 +178,22 @@ def search(request):
                 return  render_to_response('show_error.html',errors)
             else:
                 data = models.userdata.objects.filter(name=user_name, time=nov_times)
+                datas = Context({"nov_data":data})
                 if data.count() > 0:
                     table_list = []
                     for item in data:
                         soup = BeautifulSoup(item.date)
                         tr_node = soup.find_all('tr')
+                        count_tr = len(tr_node)
                         tr_list = []
+                        count_td = 0
                         for tr in tr_node:
                             hd_data = tr.find_all(['th', 'td'])
                             hds = [hd.get_text() for hd in hd_data]
+                            count_td += len(hds)
                             tr_list.append(hds)
+                        if count_td % count_tr != 0:
+                            return render_to_response('show_table.html',datas)
                         table_list.append(tr_list)
                     data_set = Context({"table_list": table_list})
                     return render_to_response('show.html', data_set)
@@ -183,7 +226,7 @@ def outfile(request):
         tr_nov = soup_all.find_all('tr')
         for tr in tr_nov:
             br_tds = tr.find_all(['th', 'td'])
-            tds = [td.get_text().encode('gb18030') for td in br_tds]
+            tds = [td.get_text().replace(u'\xa0', u' ').encode('gb18030') for td in br_tds]
             writer.writerow(tds)
         writer.writerow([])
     return response

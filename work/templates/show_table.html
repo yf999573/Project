@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/navcolor.css' %}" type="text/css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {% load static %}
+    <script src="{% static "js/JS.js" %}"></script>
+    {% load static %}
+    <script src="{% static "js/show.js" %}"></script>
+    <title>提取表格展示页</title>
+</head>
+<body>
+<div class="sky" style="position:absolute;width:100%;left:0; top: 0; width:100%; height:100% ">
+    <div class="clouds_one"></div>
+    <div class="clouds_two"></div>
+    <div class="clouds_three"></div>
+</div>
+
+<!--导航条-->
+<nav class="navbar navbar-default" role="navigation" style="margin: auto; left:0; top: 0; width:100%; ">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">表格提取</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/welcome/">主页</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div style="top: 70px; width:100%; ">
+    <div class="row" style="margin-top:25px;">
+            <input type="search" class="col-md-8 col-md-offset-1 light-table-filter" data-table="order-table" placeholder="请输入您要查找的内容" style="padding: 6px 12px;">
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-10 col-md-offset-1" style="padding: 0px !important;">
+            <div class="tbl-content">
+                <table class="order-table" cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                    <tr>
+                        <th>主题词</th>
+                        <th>内容</th>
+                    </tr>
+                    </thead>
+                    {% for item in nov_data %}
+                        <tbody>
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.date | safe }}</td>
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

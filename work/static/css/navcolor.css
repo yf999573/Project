@@ -185,7 +185,7 @@
     position:absolute;
     top:99px;
     font-weight: bold;
-    color:dodgerblue;
+    color:#FFFFFF;
     font-size: 12px;
 }
 .checkPwd
@@ -193,7 +193,7 @@
     position:absolute;
     top: 174px;
     font-weight: bold;
-    color:dodgerblue;
+    color:#FFFFFF;
     font-size: 12px;
 }
 .checkOk
@@ -201,7 +201,7 @@
     position:absolute;
     top:250px;
     font-weight: bold;
-    color:dodgerblue;
+    color:#FFFFFF;
     font-size: 12px;
 }
 .pwdstrength

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <!--[if IE 8]><style>.ie8 .alert-circle,.ie8 .alert-footer{display:none}.ie8 .alert-box{padding-top:75px}.ie8 .alert-sec-text{top:45px}</style><![endif]-->
-<title>爬取错误提示信息</title>
+<title>账户管理提示信息</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/error.css' %}" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}" tppabs="{% static 'css/style2.css' %}" />
@@ -50,7 +50,7 @@ function alertSet(e) {
     document.getElementById("js-sec-text").innerHTML = t,
     setInterval(function() {
         if (0 == t){
-			location.href="/welcome/";//#时间到后跳转地址
+			location.href="/user/";//#时间到后跳转地址
 		}else {
             t -= 1,
             document.getElementById("js-sec-text").innerHTML = t;
