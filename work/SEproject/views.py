@@ -8,6 +8,8 @@ from django.http.response import HttpResponseRedirect
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from bs4 import BeautifulSoup
+from reportlab.pdfgen import canvas
+import pdfcrowd
 import csv
 from SEproject.models import  userdata,user
 from django.template import RequestContext
