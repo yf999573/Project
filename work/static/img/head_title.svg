@@ -1,0 +1,20 @@
+<svg width="540" height="54" xmlns="http://www.w3.org/2000/svg">
+ <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="未登录_blur">
+   <feGaussianBlur stdDeviation="0.4" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <title>head_title</title>
+ <desc>Created with Sketch.</desc>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="56" width="542" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="#000" filter="url(#未登录_blur)" fill-rule="evenodd" fill="#ffffff" id="未登录">
+   <text font-weight="bold" stroke="#000000" transform="matrix(1.451884545329203,0,0,2.156367281870432,-23.907251952767588,-7.0693246128393294) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="26" id="svg_2" y="25.706552" x="15.251839" stroke-opacity="null" stroke-width="0" fill="#ffffff">网站表格，随心提取，方便操作</text>
+  </g>
+ </g>
+</svg>

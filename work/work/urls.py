@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^search/',views.search),
     url(r'^hislist/',views.hislist),
     url(r'^outfile/',views.outfile),
+    url(r'^change/',views.changepwd),
     url(r'^test/',views.test),
     url(r'^admin/', admin.site.urls),
 ]

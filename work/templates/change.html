@@ -1,15 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>修改密码</title>
+    <meta charset="utf-8"/>
+    <title>后台登录</title>
+    <meta name="author" content="DeathGhost" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}" tppabs="{% static 'css/style2.css' %}" />
+    <style>
+        body{height:100%;background:#16a085;overflow:hidden;}
+        canvas{z-index:-1;position:absolute;}
+    </style>
+    {% load static %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/verificationNumbers.js' %}" tppabs="js/verificationNumbers.js"></script>
+    <script src="{% static 'js/Particleground.js' %}" tppabs="js/Particleground.js"></script>
+    <script>
+        $(document).ready(function() {
+            //粒子背景特效
+            $('body').particleground({
+                dotColor: '#5cbdaa',
+                lineColor: '#5cbdaa'
+            });
+            //测试提交，对接程序删除即可
+            $(".submit_btn").click(function(){
+                location.href="javascrpt:;"/*tpa=http://***index.html*/;
+            });
+        });
+    </script>
 </head>
 <body>
-<form action="/change/" method="post">
-    <input type="text" name="username" hint="输入用户名"/>
-    <input type="email" name="email" hint="输入验证邮箱信息"/>
-    <input type="password" name="password" hint="输入更新密码"/>
-    <input type="submit" value="提交">
+<form class="admin_login" action="/change/" method="post">
+    <dt>
+        <strong>密码找回</strong>
+    </dt>
+    <dd class="user_icon">
+        <input type="text" name="username" placeholder="请输入用户名" class="login_txtbx"/>
+    </dd>
+    <dd class="pwd_icon">
+        <input type="password" name="email" placeholder="输入验证邮箱信息" class="login_txtbx"/>
+    </dd>
+    <dd class="val_icon">
+        <input type="password" name="password" placeholder="输入更新密码" class="login_txtbx"/>
+    </dd>
+    <dd>
+        <input type="submit" value="提交" class="submit_btn"/>
+    </dd>
 </form>
 </body>
 </html>

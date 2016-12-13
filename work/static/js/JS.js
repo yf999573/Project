@@ -172,6 +172,6 @@ function blurPwdOk(pwdOk) {
     }
     else {
         checkOk.innerHTML = "输入正确";
-        return true;
+        return false;
     }
 }
